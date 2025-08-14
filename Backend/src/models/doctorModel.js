@@ -12,7 +12,7 @@ const doctorSchema = new mongoose.Schema(
     address: { type: String, required: true, trim: true },
     specialization: { type: String, required: true, trim: true },
     experience: { type: Number, required: true },
-    feesPerCunsaltation: { type: Number, required: true },
+    feesPerConsultation: { type: Number, required: true },
     status: { type: Number, default: 0 }, // 0 - pending, 1 - approved, 2 - rejected
     timing: {
       from: { type: String, required: true, trim: true },
@@ -23,6 +23,6 @@ const doctorSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const User = mongoose.model("User", doctorSchema);
+const User = mongoose.model("Doctor", doctorSchema);
 
 export default User;
