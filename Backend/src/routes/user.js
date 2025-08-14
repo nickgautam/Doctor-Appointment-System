@@ -1,7 +1,7 @@
 import express from "express";
 import { body } from "express-validator";
 const router = express.Router();
-import { registerUser } from "../controllers/userController.js";
+import { loginUser, registerUser } from "../controllers/userController.js";
 import { throwError } from "../middleware/errorMiddleware.js";
 
 router.post(
@@ -34,6 +34,20 @@ router.post(
     .withMessage("Confirm Password is required"),
   throwError,
   registerUser
+);
+
+router.post(
+  "/login",
+  body("email")
+    .trim()
+    .notEmpty()
+    .withMessage("Email is required")
+    .bail()
+    .isEmail()
+    .withMessage("Invalid email"),
+  body("password").trim().notEmpty().withMessage("Password is required"),
+  throwError,
+  loginUser
 );
 
 export default router;
