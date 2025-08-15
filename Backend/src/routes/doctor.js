@@ -5,6 +5,7 @@ import { body } from "express-validator";
 import { throwError } from "../middleware/errorMiddleware.js";
 const router = express.Router();
 
+// This api is being used for doctor application submission as well as profile update.
 router.post(
   "/apply-for-doctor",
   authentication,
